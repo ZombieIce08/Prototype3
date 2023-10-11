@@ -395,6 +395,7 @@ MonoBehaviour:
   jumpForce: 10
   gravityModifier: 2
   isOnGround: 1
+  gameOver: 0
 --- !u!65 &622027608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -424,7 +425,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622027606}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 60
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -604,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450a67cb414cc1b4cb4e8b1fe81b3964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs: {fileID: 2773375520439314687}
+  obstaclePrefabs: {fileID: 1828826147936807625, guid: d82a4033c176767479c307d2db22ad71, type: 3}
 --- !u!4 &1820781189
 Transform:
   m_ObjectHideFlags: 0
@@ -790,11 +791,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82a4033c176767479c307d2db22ad71, type: 3}
---- !u!1 &2773375520439314687 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1828826147936807625, guid: d82a4033c176767479c307d2db22ad71, type: 3}
-  m_PrefabInstance: {fileID: 2773375520439314686}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
