@@ -17,7 +17,14 @@ public class AnimatedPlayerController : MonoBehaviour
     public bool isOnGround;
 
     //Animattion Variables
-    private Animator animator;  
+    private Animator animator;
+
+    //Particle Variables
+    public ParticleSystem dustCloud;
+
+    // Attack Variable
+    public KeyCode attackKey;
+
 
 
     // Start is called before the first frame update
@@ -26,6 +33,7 @@ public class AnimatedPlayerController : MonoBehaviour
         //Get Components
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+       dustCloud.Stop();
 
 
     }
@@ -38,9 +46,22 @@ public class AnimatedPlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * verticalInput);
 
         //Activate or Deactivate Running 
-        animator.SetFloat("VerticalInput", Mathf.Abs(verticalInput));
+        animator.SetFloat("verticalInput", Mathf.Abs(verticalInput));
 
-        //Rotation
+        //Activate Dust Cloud
+
+
+        if (verticalInput > 0 && !dustCloud.isPlaying)
+        {
+            dustCloud.Play();
+        }
+        else if (verticalInput <= 0)
+        {
+            dustCloud.Stop();
+        }
+       
+
+        //Rotatio
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * horizontalInput);
 
@@ -51,10 +72,10 @@ public class AnimatedPlayerController : MonoBehaviour
             isOnGround = false;
             animator.SetBool("isOnGround", isOnGround);
         }
-        //Shoot 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //Attack
+        if (Input.GetKeyDown(attackKey))
         {
-            animator.SetTrigger("Shoot");
+            animator.SetTrigger("attack");
         }
 
     }
